@@ -1,0 +1,60 @@
+.scorecard{
+    background: black;
+    padding: 15px 10px;
+    color: aliceblue;
+}
+.commentaryList{
+    background: #f3f3f3;
+    font-size: 13px;
+    padding: 5px 10px;
+    margin: 5px 0;
+}
+
+.commentaryhead{
+    margin: 15px 0 5px;
+    background: #787777;
+    padding: 5px 10px;
+    font-weight: 600;
+    border-radius: 3px;
+    color: white;
+}
+.currectinngs{
+    font-size: 14px;
+    color: #a1a1a1;
+}
+.scorestyle{
+    font-size: 19px;
+}
+table>tr> th, td {
+    padding: 5px;
+    text-align: end;
+  }
+  .text-left{
+    text-align: left !important;
+  }
+  .w-50{
+    width: 44%;
+  }
+  .w-5{
+    width: 8%;
+  }
+  .w-50{
+    width: 40%;
+  }
+  .w-6{
+    width: 9%;
+  }
+.errmeg{
+    font-weight: 600;
+    color: #686868;
+    margin-top: 28px;
+    font-size: 22px;
+    background: #eee;
+    padding: 7px 10px;
+    border-radius: 5px;
+}
+
+.g-25{
+  display:grid;
+  grid-template-columns: 25% 75%;
+}

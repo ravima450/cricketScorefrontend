@@ -1,0 +1,108 @@
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand">Un-Beatable</a>
+    <form #f="ngForm" class="d-flex" role="search">
+      <input required class="form-control me-2" min="50000" max="99999" type="number" name="myinput" placeholder="Search" aria-label="Search" [(ngModel)]="myinput">
+      <button class="btn btn-outline-light" type="number" (click)="funfn()" [disabled]="!f.valid">Update</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="text-center" *ngIf="errmessaged != null">
+    <div class="errmeg">{{errmessaged}}</div>
+    <img src="./assets/cricket-player-batting.jpg" alt="404" width="100%">
+  </div>
+  <div *ngIf="errmessaged == null">
+
+  <div class="d-flex justify-content-between align-items-center">
+  <div class="mt-2"> {{match.matchHeader.team1.name}} vs {{match.matchHeader.team2.name}}, {{match.matchHeader.matchDescription}}  Live Cricket Score</div>
+  <small>{{match.matchHeader.seriesDesc}}</small>
+  </div>
+  <div class="scorecard mt-2">
+  <div *ngFor="let items of miniscore?.matchScoreDetails?.inningsScoreList.reverse(); let i =index; let l = last" >
+    <div [ngClass]='{"currectinngs": l != true}' class="scorestyle"><b>{{items.batTeamName}}</b>: <b>{{items.score}}-{{items.wickets}}</b> <small> (Overs:{{items.overs}})</small></div>
+  </div>
+  <div>{{match.miniscore.status}} </div>
+  
+</div>
+<div style="overflow: hidden;">
+  <table style="width: 100%; margin-top: 15px; max-width:600px; overflow: auto;">
+    <tr style="background: #eee;">
+      <th class="w-50 text-left">Batsman</th>
+      <th class="w-6">R</th>
+      <th class="w-6">B</th>
+      <th class="w-6">F</th>
+      <th class="w-6">S</th>
+      <th class="w-6">Mi</th>
+      <th class="w-6">SR</th>
+    </tr>
+    
+    <tr *ngIf="miniscore.batsmanStriker.batName">
+      <td class="text-left">{{miniscore.batsmanStriker.batName}}* </td>
+      <td>{{miniscore.batsmanStriker.batRuns}} </td>
+      <td>{{miniscore.batsmanStriker.batBalls}} </td>
+      <td>{{miniscore.batsmanStriker.batFours}} </td>
+      <td>{{miniscore.batsmanStriker.batSixes}} </td>
+      <td>{{miniscore.batsmanStriker.batMins}} </td>
+      <td>{{miniscore.batsmanStriker.batStrikeRate}} </td>        
+    </tr>
+    <tr *ngIf="miniscore.batsmanNonStriker.batName">
+      <td class="text-left">{{miniscore.batsmanNonStriker.batName}} </td>
+      <td>{{miniscore.batsmanNonStriker.batRuns}} </td>
+      <td>{{miniscore.batsmanNonStriker.batBalls}} </td>
+      <td>{{miniscore.batsmanNonStriker.batFours}} </td>
+      <td>{{miniscore.batsmanNonStriker.batSixes}} </td>
+      <td>{{miniscore.batsmanNonStriker.batMins}} </td>
+      <td>{{miniscore.batsmanNonStriker.batStrikeRate}} </td>        
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-top: 15px; max-width:600px; overflow: auto;">
+    <tr style="background: #eee;">
+      <th class="w-40 text-left">Bowler</th>
+      <th class="w-5">O</th>
+      <th class="w-5">W</th>
+      <th class="w-5">Mdn</th>
+      
+      <th class="w-5">WD</th>
+      <th class="w-5">NB</th>
+      <th class="w-5">EC</th>
+    </tr>
+   
+    <tr *ngIf="miniscore.bowlerStriker.bowlName">
+      <td class="text-left">{{miniscore.bowlerStriker.bowlName}}* </td>
+      <td>{{miniscore.bowlerStriker.bowlOvs}} </td>
+      <td>{{miniscore.bowlerStriker.bowlWides}} </td>
+      <td>{{miniscore.bowlerStriker.bowlMaidens}} </td>
+      <td>{{miniscore.bowlerStriker.bowlWides}} </td>
+      <td>{{miniscore.bowlerStriker.bowlNoballs}} </td>
+      <td>{{miniscore.bowlerStriker.bowlEcon}} </td>        
+    </tr>
+    <tr *ngIf="miniscore.bowlerNonStriker.bowlName">
+      <td class="text-left">{{miniscore.bowlerNonStriker.bowlName}} </td>
+      <td>{{miniscore.bowlerNonStriker.bowlOvs}} </td>
+      <td>{{miniscore.bowlerNonStriker.bowlWides}} </td>
+      <td>{{miniscore.bowlerNonStriker.bowlMaidens}} </td>
+      <td>{{miniscore.bowlerNonStriker.bowlWides}} </td>
+      <td>{{miniscore.bowlerNonStriker.bowlNoballs}} </td>
+      <td>{{miniscore.bowlerNonStriker.bowlEcon}} </td>        
+    </tr>
+  </table>
+
+  <div>Recent: {{miniscore.recentOvsStats}}</div>
+  <div>Last Wicket: {{miniscore.lastWicket}}</div>
+  <div>PartnerShip {{miniscore.partnerShip.runs}}({{miniscore.partnerShip.balls}})</div>
+
+
+</div>
+
+<div class="commentaryhead">Commentary</div>
+<div *ngFor="let item of commentaryList" class="commentaryList">
+  {{textfn(item)}}
+</div>
+
+<img style="    position: fixed;
+right: 0;
+bottom: 0;" src="./assets/mahendra-singh-dhoni.png" width="200px" alt="">
+</div>

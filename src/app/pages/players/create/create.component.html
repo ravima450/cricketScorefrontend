@@ -1,0 +1,60 @@
+<mat-card>
+    <mat-card-header *ngIf="!isEdit">Player Create</mat-card-header>
+    <mat-card-header *ngIf="isEdit">Player {{model.playerName}}  (On edit mode)</mat-card-header>
+
+
+    
+<form #f="ngForm" class="row" (ngSubmit)="create(f)">
+    <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <mat-form-field class="w-100">
+        <mat-label>Player Name</mat-label>
+        <input type="text" name="playername" matInput required #playername="ngModel" [(ngModel)]="model.playerName">
+    </mat-form-field>
+</div>
+<div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <mat-form-field class="w-100">
+        <mat-label>Player Type</mat-label>
+        
+        
+        <mat-select required name="playerType" #playerType="ngModel" [(ngModel)]="model.playerType">
+            <mat-option *ngFor="let item of playertype" [value]="item.value">{{item.value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <mat-form-field class="w-100">
+        <mat-label>Aution Credit</mat-label>
+        <mat-select required name="AutionCredit" #AutionCredit="ngModel" [(ngModel)]="model.AutionCredit">
+            <mat-option *ngFor="let item of credit" [value]="item.value">{{item.value}}</mat-option>
+        </mat-select>
+    </mat-form-field></div>
+    <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <mat-form-field class="w-100">
+        <mat-label>Batting Hand</mat-label>
+        <mat-select required name="BatingHand" #BatingHand="ngModel" [(ngModel)]="model.BatingHand">
+            <mat-option *ngFor="let item of hands" [value]="item.value">{{item.value}}</mat-option>
+        </mat-select>
+    </mat-form-field></div>
+    <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <mat-form-field class="w-100">
+        <mat-label>Blowing Hand</mat-label>
+        <mat-select required name="BlowingHand" #BlowingHand="ngModel" [(ngModel)]="model.BlowingHand">
+            <mat-option *ngFor="let item of hands" [value]="item.value">{{item.value}}</mat-option>
+        </mat-select>
+    </mat-form-field></div>
+    <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <mat-form-field class="w-100">
+        <mat-label>Teams</mat-label>
+        <input type="text" name="teams" matInput required #teams="ngModel" [(ngModel)]="model.teams">
+    </mat-form-field></div>
+    <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <mat-form-field class="w-100">
+        <mat-label>City</mat-label>
+        <input type="text" name="city" matInput required #city="ngModel" [(ngModel)]="model.city">
+    </mat-form-field></div>
+    <div class="col-12 text-right">
+        <button type="button" color="" mat-raised-button  routerLink="/pages/palyers/index" >Back</button>
+    <button type="submit" [disabled]="!f.valid" mat-raised-button color="primary" class="ml-2">{{isEdit?'Update':'Submit'}}</button>
+</div>
+</form>
+</mat-card>

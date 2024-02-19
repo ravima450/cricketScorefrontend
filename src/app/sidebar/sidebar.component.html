@@ -1,0 +1,55 @@
+<nav class="sidebar">
+  <div class="text">
+     RAVIMA Sports
+  </div>
+  
+  
+  <ul class="main_side" >
+    <ng-container *ngFor="let item of sidebarlist">
+      <li class="" (click)="activemenufun(item.label)" [ngClass]="{'active': activelabel === item.label}" >
+        <a *ngIf="!item?.submenu" routerLink={{item.link}} >{{item.label}}</a>
+     
+        <a *ngIf="item?.submenu" (click)="toggleSubMenu(item.submenuname)" routerLink="/" >{{item.submenuname}}
+        <span class="fas fa-caret-down"></span>
+        </a>
+        <ul class="item-show-1" *ngIf="item?.submenu" [ngClass]="{'show': subMenuOpen === item.submenuname}" class="item-show-item1">
+          <ng-container *ngFor="let isub of item.submenu">
+          
+           <li (click)="activemenufun(isub.label)" [ngClass]="{'active': activelabel === isub.label}"><a routerLink="/">{{isub.label}}</a></li>
+          </ng-container>
+        </ul>
+     </li>
+    </ng-container>
+     <!-- <li>
+        <a routerLink="/" id="2">Services
+        <span class="fas fa-caret-down"></span>
+        </a>
+        <ul class="item-show-2">
+           <li><a routerLink="/">App Design</a></li>
+           <li><a routerLink="/">Web Design</a></li>
+        </ul>
+     </li>
+     <li><a routerLink="/">Users</a></li>
+     <li><a routerLink="/">Message</a></li>
+     <li><a routerLink="/">Bookmark</a></li>
+     <li><a routerLink="/">Files</a></li> -->
+  </ul>
+</nav>
+
+<!-- <div class="content">
+  <div class="header">
+     Main content goes here
+     <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Favorite food</mat-label>
+        <input matInput placeholder="Ex. Pizza" value="Sushi">
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>Leave a comment</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+      </mat-form-field>
+    </form>
+    </div>
+  
+</div> -->

@@ -1,0 +1,18 @@
+<p>arrayform works!</p>
+<form [formGroup]="gridform">
+    <div formArrayName="seatsList">
+        <div *ngFor="let item of seatResponse; let k=index">
+            <div *ngIf="item.arrdata.length >= 1;">
+                <ng-container *ngFor="let lessonForm of seatsList.controls; let i = index">
+                    <div [formGroupName]=i *ngIf="i == k">
+                        <select formControlName="seat">
+                            <option *ngFor="let item of item.arrdata" [value]="item.seat">{{item.seat}}</option>
+                        </select>
+                        <button (click)="postcal(item, k)">book</button>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <button type="submit" (click)="submitclick()">submit</button>
+</form>
